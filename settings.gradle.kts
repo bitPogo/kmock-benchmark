@@ -19,7 +19,7 @@ plugins {
 
 include(
     ":benchmark-kmock",
-    // ":benchmark-mco",
+    ":benchmark-mockmp",
 )
 
 buildCache {
