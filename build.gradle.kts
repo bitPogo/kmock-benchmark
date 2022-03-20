@@ -5,10 +5,10 @@
  */
 
 import tech.antibytes.gradle.dependency.Version
-import tech.antibytes.kmock.example.dependency.addCustomRepositories
+import tech.antibytes.kmock.benchmark.dependency.addCustomRepositories
 
 plugins {
-    id("tech.antibytes.kmock.example.dependency")
+    id("tech.antibytes.kmock.benchmark.dependency")
 
     id("tech.antibytes.gradle.dependency")
 
@@ -22,7 +22,7 @@ allprojects {
         addCustomRepositories()
         mavenCentral()
         google()
-        jcenter()
+        jcenter() // nodejs
     }
 
     configurations.all {
