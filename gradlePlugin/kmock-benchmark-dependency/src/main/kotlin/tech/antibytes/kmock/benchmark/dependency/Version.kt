@@ -50,4 +50,16 @@ object Version {
          */
         const val core = "1.1.4"
     }
+
+    val google = Google
+
+    object Google {
+        /**
+         * [KSP](https://github.com/google/ksp)
+         */
+        /**
+         * [KSP DevTools on MavenCentral](https://mvnrepository.com/artifact/com.google.devtools.ksp/com.google.devtools.ksp.gradle.plugin)
+         */
+        const val ksp = "1.6.10-1.0.4"
+    }
 }

@@ -14,7 +14,6 @@ import tech.antibytes.util.test.coroutine.runBlockingTest
 import tech.antibytes.util.test.fixture.fixture
 import tech.antibytes.util.test.fixture.kotlinFixture
 import kotlin.js.JsName
-import kotlin.test.AfterTest
 import kotlin.test.Test
 
 @MockCommon(
@@ -71,17 +70,12 @@ import kotlin.test.Test
 )
 class BenchmarkSpec {
     private val fixture = kotlinFixture()
-    private val verifier = Verifier()
-
-    @AfterTest
-    fun tearDown() {
-        verifier.clear()
-    }
 
     @Test
     @JsName("fn0")
     fun `It runs Interface0`() {
         // Given
+        val verifier = Verifier()
         val instance: Interface0Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -113,6 +107,7 @@ class BenchmarkSpec {
     @JsName("fn1")
     fun `It runs Interface1`() {
         // Given
+        val verifier = Verifier()
         val instance: Interface1Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -144,6 +139,7 @@ class BenchmarkSpec {
     @JsName("fn2")
     fun `It runs Interface2`() {
         // Given
+        val verifier = Verifier()
         val instance: Interface2Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -175,6 +171,7 @@ class BenchmarkSpec {
     @JsName("fn3")
     fun `It runs Interface3`() {
         // Given
+        val verifier = Verifier()
         val instance: Interface3Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -206,6 +203,7 @@ class BenchmarkSpec {
     @JsName("fn4")
     fun `It runs Interface4`() {
         // Given
+        val verifier = Verifier()
         val instance: Interface4Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -237,6 +235,7 @@ class BenchmarkSpec {
     @JsName("fn5")
     fun `It runs Interface5`() {
         // Given
+        val verifier = Verifier()
         val instance: Interface5Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -268,6 +267,7 @@ class BenchmarkSpec {
     @JsName("fn6")
     fun `It runs Interface6`() {
         // Given
+        val verifier = Verifier()
         val instance: Interface6Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -299,6 +299,7 @@ class BenchmarkSpec {
     @JsName("fn7")
     fun `It runs Interface7`() {
         // Given
+        val verifier = Verifier()
         val instance: Interface7Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -330,6 +331,7 @@ class BenchmarkSpec {
     @JsName("fn8")
     fun `It runs Interface8`() {
         // Given
+        val verifier = Verifier()
         val instance: Interface8Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -361,6 +363,7 @@ class BenchmarkSpec {
     @JsName("fn9")
     fun `It runs Interface9`() {
         // Given
+        val verifier = Verifier()
         val instance: Interface9Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -392,6 +395,7 @@ class BenchmarkSpec {
     @JsName("fn10")
     fun `It runs Interface10`() {
         // Given
+        val verifier = Verifier()
         val instance: Interface10Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -423,6 +427,7 @@ class BenchmarkSpec {
     @JsName("fn11")
     fun `It runs Interface11`() {
         // Given
+        val verifier = Verifier()
         val instance: Interface11Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -454,6 +459,7 @@ class BenchmarkSpec {
     @JsName("fn12")
     fun `It runs Interface12`() {
         // Given
+        val verifier = Verifier()
         val instance: Interface12Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -485,6 +491,7 @@ class BenchmarkSpec {
     @JsName("fn13")
     fun `It runs Interface13`() {
         // Given
+        val verifier = Verifier()
         val instance: Interface13Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -516,6 +523,7 @@ class BenchmarkSpec {
     @JsName("fn14")
     fun `It runs Interface14`() {
         // Given
+        val verifier = Verifier()
         val instance: Interface14Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -547,6 +555,7 @@ class BenchmarkSpec {
     @JsName("fn15")
     fun `It runs Interface15`() {
         // Given
+        val verifier = Verifier()
         val instance: Interface15Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -578,6 +587,7 @@ class BenchmarkSpec {
     @JsName("fn16")
     fun `It runs Interface16`() {
         // Given
+        val verifier = Verifier()
         val instance: Interface16Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -609,6 +619,7 @@ class BenchmarkSpec {
     @JsName("fn17")
     fun `It runs Interface17`() {
         // Given
+        val verifier = Verifier()
         val instance: Interface17Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -640,6 +651,7 @@ class BenchmarkSpec {
     @JsName("fn18")
     fun `It runs Interface18`() {
         // Given
+        val verifier = Verifier()
         val instance: Interface18Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -671,6 +683,7 @@ class BenchmarkSpec {
     @JsName("fn19")
     fun `It runs Interface19`() {
         // Given
+        val verifier = Verifier()
         val instance: Interface19Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -702,6 +715,7 @@ class BenchmarkSpec {
     @JsName("fn20")
     fun `It runs Interface20`() {
         // Given
+        val verifier = Verifier()
         val instance: Interface20Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -733,6 +747,7 @@ class BenchmarkSpec {
     @JsName("fn21")
     fun `It runs Interface21`() {
         // Given
+        val verifier = Verifier()
         val instance: Interface21Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -764,6 +779,7 @@ class BenchmarkSpec {
     @JsName("fn22")
     fun `It runs Interface22`() {
         // Given
+        val verifier = Verifier()
         val instance: Interface22Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -795,6 +811,7 @@ class BenchmarkSpec {
     @JsName("fn23")
     fun `It runs Interface23`() {
         // Given
+        val verifier = Verifier()
         val instance: Interface23Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -826,6 +843,7 @@ class BenchmarkSpec {
     @JsName("fn24")
     fun `It runs Interface24`() {
         // Given
+        val verifier = Verifier()
         val instance: Interface24Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -857,6 +875,7 @@ class BenchmarkSpec {
     @JsName("fn25")
     fun `It runs Interface25`() = runBlockingTest {
         // Given
+        val verifier = Verifier()
         val instance: Interface25Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -888,6 +907,7 @@ class BenchmarkSpec {
     @JsName("fn26")
     fun `It runs Interface26`() = runBlockingTest {
         // Given
+        val verifier = Verifier()
         val instance: Interface26Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -919,6 +939,7 @@ class BenchmarkSpec {
     @JsName("fn27")
     fun `It runs Interface27`() = runBlockingTest {
         // Given
+        val verifier = Verifier()
         val instance: Interface27Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -950,6 +971,7 @@ class BenchmarkSpec {
     @JsName("fn28")
     fun `It runs Interface28`() = runBlockingTest {
         // Given
+        val verifier = Verifier()
         val instance: Interface28Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -981,6 +1003,7 @@ class BenchmarkSpec {
     @JsName("fn29")
     fun `It runs Interface29`() = runBlockingTest {
         // Given
+        val verifier = Verifier()
         val instance: Interface29Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -1012,6 +1035,7 @@ class BenchmarkSpec {
     @JsName("fn30")
     fun `It runs Interface30`() = runBlockingTest {
         // Given
+        val verifier = Verifier()
         val instance: Interface30Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -1043,6 +1067,7 @@ class BenchmarkSpec {
     @JsName("fn31")
     fun `It runs Interface31`() = runBlockingTest {
         // Given
+        val verifier = Verifier()
         val instance: Interface31Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -1074,6 +1099,7 @@ class BenchmarkSpec {
     @JsName("fn32")
     fun `It runs Interface32`() = runBlockingTest {
         // Given
+        val verifier = Verifier()
         val instance: Interface32Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -1105,6 +1131,7 @@ class BenchmarkSpec {
     @JsName("fn33")
     fun `It runs Interface33`() = runBlockingTest {
         // Given
+        val verifier = Verifier()
         val instance: Interface33Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -1136,6 +1163,7 @@ class BenchmarkSpec {
     @JsName("fn34")
     fun `It runs Interface34`() = runBlockingTest {
         // Given
+        val verifier = Verifier()
         val instance: Interface34Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -1167,6 +1195,7 @@ class BenchmarkSpec {
     @JsName("fn35")
     fun `It runs Interface35`() = runBlockingTest {
         // Given
+        val verifier = Verifier()
         val instance: Interface35Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -1198,6 +1227,7 @@ class BenchmarkSpec {
     @JsName("fn36")
     fun `It runs Interface36`() = runBlockingTest {
         // Given
+        val verifier = Verifier()
         val instance: Interface36Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -1229,6 +1259,7 @@ class BenchmarkSpec {
     @JsName("fn37")
     fun `It runs Interface37`() = runBlockingTest {
         // Given
+        val verifier = Verifier()
         val instance: Interface37Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -1260,6 +1291,7 @@ class BenchmarkSpec {
     @JsName("fn38")
     fun `It runs Interface38`() = runBlockingTest {
         // Given
+        val verifier = Verifier()
         val instance: Interface38Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -1291,6 +1323,7 @@ class BenchmarkSpec {
     @JsName("fn39")
     fun `It runs Interface39`() = runBlockingTest {
         // Given
+        val verifier = Verifier()
         val instance: Interface39Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -1322,6 +1355,7 @@ class BenchmarkSpec {
     @JsName("fn40")
     fun `It runs Interface40`() = runBlockingTest {
         // Given
+        val verifier = Verifier()
         val instance: Interface40Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -1353,6 +1387,7 @@ class BenchmarkSpec {
     @JsName("fn41")
     fun `It runs Interface41`() = runBlockingTest {
         // Given
+        val verifier = Verifier()
         val instance: Interface1Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -1384,6 +1419,7 @@ class BenchmarkSpec {
     @JsName("fn42")
     fun `It runs Interface42`() = runBlockingTest {
         // Given
+        val verifier = Verifier()
         val instance: Interface2Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -1415,6 +1451,7 @@ class BenchmarkSpec {
     @JsName("fn43")
     fun `It runs Interface43`() = runBlockingTest {
         // Given
+        val verifier = Verifier()
         val instance: Interface43Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -1446,6 +1483,7 @@ class BenchmarkSpec {
     @JsName("fn44")
     fun `It runs Interface44`() = runBlockingTest {
         // Given
+        val verifier = Verifier()
         val instance: Interface44Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -1477,6 +1515,7 @@ class BenchmarkSpec {
     @JsName("fn45")
     fun `It runs Interface45`() = runBlockingTest {
         // Given
+        val verifier = Verifier()
         val instance: Interface45Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -1508,6 +1547,7 @@ class BenchmarkSpec {
     @JsName("fn46")
     fun `It runs Interface46`() = runBlockingTest {
         // Given
+        val verifier = Verifier()
         val instance: Interface46Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -1539,6 +1579,7 @@ class BenchmarkSpec {
     @JsName("fn47")
     fun `It runs Interface47`() = runBlockingTest {
         // Given
+        val verifier = Verifier()
         val instance: Interface47Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -1570,6 +1611,7 @@ class BenchmarkSpec {
     @JsName("fn48")
     fun `It runs Interface48`() = runBlockingTest {
         // Given
+        val verifier = Verifier()
         val instance: Interface48Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
@@ -1601,6 +1643,7 @@ class BenchmarkSpec {
     @JsName("fn49")
     fun `It runs Interface49`() = runBlockingTest {
         // Given
+        val verifier = Verifier()
         val instance: Interface49Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
