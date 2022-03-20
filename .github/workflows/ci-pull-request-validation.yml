@@ -37,4 +37,6 @@ jobs:
         run: ./gradlew clean
       - name: Lint
         run: ./gradlew spotlessCheck
+      - name: Build
+        run: ./gradlew build
 

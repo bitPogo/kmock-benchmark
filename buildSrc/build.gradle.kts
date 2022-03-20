@@ -4,13 +4,13 @@
  * Use of this source code is governed by Apache v2.0
  */
 
-import tech.antibytes.kmock.example.dependency.Dependency
-import tech.antibytes.kmock.example.dependency.addCustomRepositories
+import tech.antibytes.kmock.benchmark.dependency.Dependency
+import tech.antibytes.kmock.benchmark.dependency.addCustomRepositories
 
 plugins {
     `kotlin-dsl`
 
-    id("tech.antibytes.kmock.example.dependency")
+    id("tech.antibytes.kmock.benchmark.dependency")
 }
 
 repositories {
@@ -22,7 +22,6 @@ repositories {
 
 dependencies {
     implementation(Dependency.gradle.dependency)
-    implementation(Dependency.gradle.coverage)
     implementation(Dependency.gradle.spotless)
     implementation(Dependency.gradle.projectConfig)
     implementation(Dependency.gradle.kmock)

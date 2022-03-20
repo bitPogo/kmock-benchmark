@@ -11,14 +11,15 @@ pluginManagement {
     }
 }
 
-// includeBuild("gradlePlugin/kmock-benchmark-dependency")
+includeBuild("gradlePlugin/kmock-benchmark-dependency")
 
 plugins {
     id("com.gradle.enterprise") version("3.7")
 }
 
 include(
-    // ":benmark-kmock",
+    ":benchmark-kmock",
+    // ":benchmark-mco",
 )
 
 buildCache {
@@ -29,4 +30,4 @@ buildCache {
     }
 }
 
-rootProject.name = "kmock-playground"
+rootProject.name = "kmock-benchmark"
