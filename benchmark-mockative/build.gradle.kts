@@ -22,7 +22,7 @@ plugins {
 
     id("tech.antibytes.gradle.configuration")
 
-    id("tech.antibytes.kmock.kmock-gradle") apply false
+    id("com.google.devtools.ksp")
 }
 
 kotlin {
@@ -56,6 +56,7 @@ kotlin {
             }
         }
         val commonTest by getting {
+            // kotlin.srcDir("build/generated/ksp/jvm/jvmTest/kotlin")
             dependencies {
                 implementation(Dependency.multiplatform.test.common)
                 implementation(Dependency.multiplatform.test.annotations)
@@ -63,7 +64,8 @@ kotlin {
                 implementation(LocalDependency.antibytes.test.kmp.core)
                 implementation(LocalDependency.antibytes.test.kmp.coroutine)
                 implementation(LocalDependency.antibytes.test.kmp.fixture)
-                implementation(LocalDependency.antibytes.test.kmp.kmock)
+
+                implementation(LocalDependency.mockative.runtime)
             }
         }
 
@@ -191,26 +193,9 @@ tasks.withType(Kotlin2JsCompile::class.java) {
     mustRunAfter(benchmark)
 }
 
-plugins.apply("tech.antibytes.kmock.kmock-gradle")
-
-project.extensions.configure<KMockExtension>("kmock") {
-    rootPackage = "tech.antibytes.kmock.benchmark"
+dependencies {
+    add("kspJvmTest", LocalDependency.mockative.processor)
+    add("kspAndroidTest", LocalDependency.mockative.processor)
+    add("kspJsTest", LocalDependency.mockative.processor)
+    add("kspIosX64Test", LocalDependency.mockative.processor)
 }
-
-afterEvaluate {
-    tasks.getByName("cleanDuplicatesIosX64Test") {
-        doLast {
-            project.logger.warn("KMOCK_BENCHMARK_CLEAN_DUP: ${System.currentTimeMillis()}")
-        }
-    }
-
-    tasks.getByName("kspTestKotlinIosX64") {
-        doLast {
-            project.logger.warn("KMOCK_BENCHMARK_KSP_START: ${System.currentTimeMillis()}")
-        }
-        doLast {
-            project.logger.warn("KMOCK_BENCHMARK_KSP_END: ${System.currentTimeMillis()}")
-        }
-    }
-}
-

@@ -1388,7 +1388,7 @@ class BenchmarkSpec {
     fun `It runs Interface41`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface1Mock = kmock(verifier = verifier)
+        val instance: Interface41Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -1420,7 +1420,7 @@ class BenchmarkSpec {
     fun `It runs Interface42`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface2Mock = kmock(verifier = verifier)
+        val instance: Interface42Mock = kmock(verifier = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
