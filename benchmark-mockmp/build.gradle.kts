@@ -199,3 +199,23 @@ dependencies {
     add("kspJsTest", LocalDependency.mockmp.processor)
     add("kspIosX64Test", LocalDependency.mockmp.processor)
 }
+
+afterEvaluate {
+    tasks.getByName("kspTestKotlinIosX64") {
+        doLast {
+            project.logger.warn("KMOCK_BENCHMARK_KSP_START: ${System.currentTimeMillis()}")
+        }
+        doLast {
+            project.logger.warn("KMOCK_BENCHMARK_KSP_END: ${System.currentTimeMillis()}")
+        }
+    }
+
+    tasks.getByName("kspTestKotlinJvm") {
+        doLast {
+            project.logger.warn("KMOCK_BENCHMARK_KSP_START: ${System.currentTimeMillis()}")
+        }
+        doLast {
+            project.logger.warn("KMOCK_BENCHMARK_KSP_END: ${System.currentTimeMillis()}")
+        }
+    }
+}

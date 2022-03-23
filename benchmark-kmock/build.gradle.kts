@@ -198,13 +198,16 @@ project.extensions.configure<KMockExtension>("kmock") {
 }
 
 afterEvaluate {
-    tasks.getByName("cleanDuplicatesIosX64Test") {
+    tasks.getByName("kspTestKotlinIosX64") {
         doLast {
-            project.logger.warn("KMOCK_BENCHMARK_CLEAN_DUP: ${System.currentTimeMillis()}")
+            project.logger.warn("KMOCK_BENCHMARK_KSP_START: ${System.currentTimeMillis()}")
+        }
+        doLast {
+            project.logger.warn("KMOCK_BENCHMARK_KSP_END: ${System.currentTimeMillis()}")
         }
     }
 
-    tasks.getByName("kspTestKotlinIosX64") {
+    tasks.getByName("kspTestKotlinJvm") {
         doLast {
             project.logger.warn("KMOCK_BENCHMARK_KSP_START: ${System.currentTimeMillis()}")
         }

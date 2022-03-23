@@ -30,7 +30,7 @@ object Version {
         /**
          * [KMock](https://github.com/bitPogo/kmock)
          */
-        const val kmock = "980554b"
+        const val kmock = "42436d8-change-source-generation-SNAPSHOT"
     }
 
     val mockmp = MocKMP
