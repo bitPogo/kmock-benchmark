@@ -1,7 +1,6 @@
 import argparse
 import subprocess
 from numpy import mean
-from numpy import median
 
 parser = argparse.ArgumentParser(prog='benchmark.py', description='Run benchmarks.')
 parser.add_argument('rounds', type=int, help='how many interration should be made')
@@ -23,8 +22,13 @@ if args.mockmp:
 if args.mockative:
     use=":benchmark-mockative"
 
+gradleTask = use  + ":" + target
+
+cmd = ['./gradlew', use +  ":" + "clean", gradleTask]
+
+
 print("initial cleanup")
-process = subprocess.Popen(['./gradlew', 'clean'],
+process = subprocess.Popen(['./gradlew', gradleTask, 'clean'],
                            stdout = subprocess.PIPE,
                            universal_newlines = True)
 
@@ -36,11 +40,12 @@ while True:
 
 print("cleanup done")
 
-gradleTask = use  + ":" + target
-
-cmd = ['./gradlew', use +  ":" + "clean", gradleTask]
-
 results = { "total": [], "ksp": [], "compile": [] }
+medianIdx = rounds >> 1
+
+def median(bucket):
+    sortedList = bucket.sort()
+    return bucket[medianIdx]
 
 for idx in range(0, rounds):
     useStart = True

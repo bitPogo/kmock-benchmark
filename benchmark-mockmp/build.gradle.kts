@@ -218,4 +218,13 @@ afterEvaluate {
             project.logger.warn("KMOCK_BENCHMARK_KSP_END: ${System.currentTimeMillis()}")
         }
     }
+
+    tasks.getByName("kspTestKotlinJs") {
+        doLast {
+            project.logger.warn("KMOCK_BENCHMARK_KSP_START: ${System.currentTimeMillis()}")
+        }
+        doLast {
+            project.logger.warn("KMOCK_BENCHMARK_KSP_END: ${System.currentTimeMillis()}")
+        }
+    }
 }
