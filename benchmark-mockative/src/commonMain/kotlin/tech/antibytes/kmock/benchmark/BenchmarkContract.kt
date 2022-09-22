@@ -8,6 +8,8 @@ package tech.antibytes.kmock.benchmark
 
 interface Interface0 {
     fun doSomething(): Int
+    fun doOtherSomething(): Int
+    fun <T> doSomething(arg0: T): Int
     fun doSomethingElse(arg0: Int, arg1: Any): Int
     fun doAnything(): Any
     fun doAnythingElse(arg0: Int, arg1: Any): Any

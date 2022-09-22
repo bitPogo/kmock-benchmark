@@ -12,4 +12,5 @@ object GradlePlugin {
     const val spotless = "com.diffplug.spotless:spotless-plugin-gradle:${Version.Gradle.spotless}"
     const val kmock = "tech.antibytes.kmock:kmock-gradle:${Version.antibytes.kmock}"
     const val ksp = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:${Version.google.ksp}"
+    const val kspApi = "com.google.devtools.ksp:symbol-processing-api:${Version.google.ksp}"
 }

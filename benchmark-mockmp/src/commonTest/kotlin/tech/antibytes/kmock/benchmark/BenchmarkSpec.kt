@@ -6,13 +6,13 @@
 
 package tech.antibytes.kmock.benchmark
 
-import org.kodein.mock.Mocker
-import org.kodein.mock.UsesMocks
-import tech.antibytes.util.test.coroutine.runBlockingTest
-import tech.antibytes.util.test.fixture.fixture
-import tech.antibytes.util.test.fixture.kotlinFixture
 import kotlin.js.JsName
 import kotlin.test.Test
+import org.kodein.mock.Mocker
+import org.kodein.mock.UsesMocks
+import tech.antibytes.kfixture.fixture
+import tech.antibytes.kfixture.kotlinFixture
+import tech.antibytes.util.test.coroutine.runBlockingTest
 
 @UsesMocks(
     BenchmarkContract.Interface0::class,

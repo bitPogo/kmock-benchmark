@@ -25,5 +25,5 @@ dependencies {
     implementation(Dependency.gradle.spotless)
     implementation(Dependency.gradle.projectConfig)
     implementation(Dependency.gradle.kmock)
-    implementation(Dependency.gradle.ksp)
+    // implementation(Dependency.gradle.ksp)
 }
