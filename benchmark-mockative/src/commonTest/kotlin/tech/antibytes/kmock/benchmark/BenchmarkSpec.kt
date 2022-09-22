@@ -7,118 +7,169 @@
 package tech.antibytes.kmock.benchmark
 
 import io.mockative.Mock
+import io.mockative.any
 import io.mockative.classOf
+import io.mockative.fun1
 import io.mockative.given
 import io.mockative.mock
 import io.mockative.time
 import io.mockative.verify
-import tech.antibytes.util.test.coroutine.runBlockingTest
-import tech.antibytes.util.test.fixture.fixture
-import tech.antibytes.util.test.fixture.kotlinFixture
 import kotlin.js.JsName
 import kotlin.test.Test
+import tech.antibytes.kfixture.fixture
+import tech.antibytes.kfixture.kotlinFixture
+import tech.antibytes.util.test.coroutine.runBlockingTest
 
 class BenchmarkSpec {
     private val fixture = kotlinFixture()
 
     @Mock
     val instance0: Interface0 = mock(classOf<Interface0>())
+
     @Mock
     val instance1: Interface1 = mock(classOf<Interface1>())
+
     @Mock
     val instance2: Interface2 = mock(classOf<Interface2>())
+
     @Mock
     val instance3: Interface3 = mock(classOf<Interface3>())
+
     @Mock
     val instance4: Interface4 = mock(classOf<Interface4>())
+
     @Mock
     val instance5: Interface5 = mock(classOf<Interface5>())
+
     @Mock
     val instance6: Interface6 = mock(classOf<Interface6>())
+
     @Mock
     val instance7: Interface7 = mock(classOf<Interface7>())
+
     @Mock
     val instance8: Interface8 = mock(classOf<Interface8>())
+
     @Mock
     val instance9: Interface9 = mock(classOf<Interface9>())
+
     @Mock
     val instance10: Interface10 = mock(classOf<Interface10>())
+
     @Mock
     val instance11: Interface11 = mock(classOf<Interface11>())
+
     @Mock
     val instance12: Interface12 = mock(classOf<Interface12>())
+
     @Mock
     val instance13: Interface13 = mock(classOf<Interface13>())
+
     @Mock
     val instance14: Interface14 = mock(classOf<Interface14>())
+
     @Mock
     val instance15: Interface15 = mock(classOf<Interface15>())
+
     @Mock
     val instance16: Interface16 = mock(classOf<Interface16>())
+
     @Mock
     val instance17: Interface17 = mock(classOf<Interface17>())
+
     @Mock
     val instance18: Interface18 = mock(classOf<Interface18>())
+
     @Mock
     val instance19: Interface19 = mock(classOf<Interface19>())
+
     @Mock
     val instance20: Interface20 = mock(classOf<Interface20>())
+
     @Mock
     val instance21: Interface21 = mock(classOf<Interface21>())
+
     @Mock
     val instance22: Interface22 = mock(classOf<Interface22>())
+
     @Mock
     val instance23: Interface23 = mock(classOf<Interface23>())
+
     @Mock
     val instance24: Interface24 = mock(classOf<Interface24>())
+
     @Mock
     val instance25: Interface25 = mock(classOf<Interface25>())
+
     @Mock
     val instance26: Interface26 = mock(classOf<Interface26>())
+
     @Mock
     val instance27: Interface27 = mock(classOf<Interface27>())
+
     @Mock
     val instance28: Interface28 = mock(classOf<Interface28>())
+
     @Mock
     val instance29: Interface29 = mock(classOf<Interface29>())
+
     @Mock
     val instance30: Interface30 = mock(classOf<Interface30>())
+
     @Mock
     val instance31: Interface31 = mock(classOf<Interface31>())
+
     @Mock
     val instance32: Interface32 = mock(classOf<Interface32>())
+
     @Mock
     val instance33: Interface33 = mock(classOf<Interface33>())
+
     @Mock
     val instance34: Interface34 = mock(classOf<Interface34>())
+
     @Mock
     val instance35: Interface35 = mock(classOf<Interface35>())
+
     @Mock
     val instance36: Interface36 = mock(classOf<Interface36>())
+
     @Mock
     val instance37: Interface37 = mock(classOf<Interface37>())
+
     @Mock
     val instance38: Interface38 = mock(classOf<Interface38>())
+
     @Mock
     val instance39: Interface39 = mock(classOf<Interface39>())
+
     @Mock
     val instance40: Interface40 = mock(classOf<Interface40>())
+
     @Mock
     val instance41: Interface41 = mock(classOf<Interface41>())
+
     @Mock
     val instance42: Interface42 = mock(classOf<Interface42>())
+
     @Mock
     val instance43: Interface43 = mock(classOf<Interface43>())
+
     @Mock
     val instance44: Interface44 = mock(classOf<Interface44>())
+
     @Mock
     val instance45: Interface45 = mock(classOf<Interface45>())
+
     @Mock
     val instance46: Interface46 = mock(classOf<Interface46>())
+
     @Mock
     val instance47: Interface47 = mock(classOf<Interface47>())
+
     @Mock
     val instance48: Interface48 = mock(classOf<Interface48>())
+
     @Mock
     val instance49: Interface49 = mock(classOf<Interface49>())
 
@@ -131,6 +182,7 @@ class BenchmarkSpec {
 
         val instance = instance0
 
+        given(instance).function(instance::doSomething, fun1<Any?>()).whenInvokedWith(any()).then { 42 }
         given(instance).invocation { doSomething() }.then { fixture.fixture() }
         given(instance).invocation { doSomethingElse(arg0, arg1) }.then { fixture.fixture() }
         given(instance).invocation { doAnything() }.then { fixture.fixture() }

@@ -39,7 +39,7 @@ object Dependency {
             object KmpTest {
                 const val core = "tech.antibytes.test-utils-kmp:test-utils:${Version.antibytes.test}"
                 const val coroutine = "tech.antibytes.test-utils-kmp:test-utils-coroutine:${Version.antibytes.test}"
-                const val fixture = "tech.antibytes.test-utils-kmp:test-utils-fixture:${Version.antibytes.test}"
+                const val fixture = "tech.antibytes.kfixture:core:${Version.antibytes.kfixture}"
                 const val kmock = "tech.antibytes.kmock:kmock:${Version.antibytes.kmock}"
             }
 
@@ -48,7 +48,7 @@ object Dependency {
             object JvmTest {
                 const val core = "tech.antibytes.test-utils-kmp:test-utils-jvm:${Version.antibytes.test}"
                 const val coroutine = "tech.antibytes.test-utils-kmp:test-utils-coroutine:${Version.antibytes.test}"
-                const val fixture = "tech.antibytes.test-utils-kmp:test-utils-fixture-jvm:${Version.antibytes.test}"
+                const val fixture = "tech.antibytes.kfixture:core-jvm:${Version.antibytes.kfixture}"
                 const val kmock = "tech.antibytes.kmock:kmock-jvm:${Version.antibytes.kmock}"
             }
         }

@@ -18,9 +18,9 @@ plugins {
 }
 
 include(
-    ":benchmark-kmock",
-    ":benchmark-mockmp",
-    ":benchmark-mockative",
+    ":benchmark-kmock"
+    // ":benchmark-mockmp",
+    // ":benchmark-mockative",
 )
 
 buildCache {

@@ -6,17 +6,18 @@
 
 package tech.antibytes.kmock.benchmark
 
-import tech.antibytes.kmock.MockCommon
-import tech.antibytes.kmock.verification.Verifier
-import tech.antibytes.kmock.verification.hasBeenStrictlyCalledWith
-import tech.antibytes.kmock.verification.verifyStrictOrder
-import tech.antibytes.util.test.coroutine.runBlockingTest
-import tech.antibytes.util.test.fixture.fixture
-import tech.antibytes.util.test.fixture.kotlinFixture
 import kotlin.js.JsName
 import kotlin.test.Test
+import tech.antibytes.kfixture.fixture
+import tech.antibytes.kfixture.kotlinFixture
+import tech.antibytes.kmock.KMock
+import tech.antibytes.kmock.KMockExperimental
+import tech.antibytes.kmock.verification.Verifier
+import tech.antibytes.kmock.verification.assertOrder
+import tech.antibytes.util.test.coroutine.runBlockingTest
 
-@MockCommon(
+@OptIn(KMockExperimental::class)
+@KMock(
     BenchmarkContract.Interface0::class,
     BenchmarkContract.Interface1::class,
     BenchmarkContract.Interface2::class,
@@ -76,7 +77,7 @@ class BenchmarkSpec {
     fun `It runs Interface0`() {
         // Given
         val verifier = Verifier()
-        val instance: Interface0Mock = kmock(verifier = verifier)
+        val instance: Interface0Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -94,7 +95,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -108,7 +109,7 @@ class BenchmarkSpec {
     fun `It runs Interface1`() {
         // Given
         val verifier = Verifier()
-        val instance: Interface1Mock = kmock(verifier = verifier)
+        val instance: Interface1Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -126,7 +127,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -140,7 +141,7 @@ class BenchmarkSpec {
     fun `It runs Interface2`() {
         // Given
         val verifier = Verifier()
-        val instance: Interface2Mock = kmock(verifier = verifier)
+        val instance: Interface2Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -158,7 +159,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -172,7 +173,7 @@ class BenchmarkSpec {
     fun `It runs Interface3`() {
         // Given
         val verifier = Verifier()
-        val instance: Interface3Mock = kmock(verifier = verifier)
+        val instance: Interface3Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -190,7 +191,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -204,7 +205,7 @@ class BenchmarkSpec {
     fun `It runs Interface4`() {
         // Given
         val verifier = Verifier()
-        val instance: Interface4Mock = kmock(verifier = verifier)
+        val instance: Interface4Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -222,7 +223,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -236,7 +237,7 @@ class BenchmarkSpec {
     fun `It runs Interface5`() {
         // Given
         val verifier = Verifier()
-        val instance: Interface5Mock = kmock(verifier = verifier)
+        val instance: Interface5Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -254,7 +255,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -268,7 +269,7 @@ class BenchmarkSpec {
     fun `It runs Interface6`() {
         // Given
         val verifier = Verifier()
-        val instance: Interface6Mock = kmock(verifier = verifier)
+        val instance: Interface6Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -286,7 +287,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -300,7 +301,7 @@ class BenchmarkSpec {
     fun `It runs Interface7`() {
         // Given
         val verifier = Verifier()
-        val instance: Interface7Mock = kmock(verifier = verifier)
+        val instance: Interface7Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -318,7 +319,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -332,7 +333,7 @@ class BenchmarkSpec {
     fun `It runs Interface8`() {
         // Given
         val verifier = Verifier()
-        val instance: Interface8Mock = kmock(verifier = verifier)
+        val instance: Interface8Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -350,7 +351,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -364,7 +365,7 @@ class BenchmarkSpec {
     fun `It runs Interface9`() {
         // Given
         val verifier = Verifier()
-        val instance: Interface9Mock = kmock(verifier = verifier)
+        val instance: Interface9Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -382,7 +383,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -396,7 +397,7 @@ class BenchmarkSpec {
     fun `It runs Interface10`() {
         // Given
         val verifier = Verifier()
-        val instance: Interface10Mock = kmock(verifier = verifier)
+        val instance: Interface10Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -414,7 +415,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -428,7 +429,7 @@ class BenchmarkSpec {
     fun `It runs Interface11`() {
         // Given
         val verifier = Verifier()
-        val instance: Interface11Mock = kmock(verifier = verifier)
+        val instance: Interface11Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -446,7 +447,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -460,7 +461,7 @@ class BenchmarkSpec {
     fun `It runs Interface12`() {
         // Given
         val verifier = Verifier()
-        val instance: Interface12Mock = kmock(verifier = verifier)
+        val instance: Interface12Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -478,7 +479,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -492,7 +493,7 @@ class BenchmarkSpec {
     fun `It runs Interface13`() {
         // Given
         val verifier = Verifier()
-        val instance: Interface13Mock = kmock(verifier = verifier)
+        val instance: Interface13Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -510,7 +511,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -524,7 +525,7 @@ class BenchmarkSpec {
     fun `It runs Interface14`() {
         // Given
         val verifier = Verifier()
-        val instance: Interface14Mock = kmock(verifier = verifier)
+        val instance: Interface14Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -542,7 +543,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -556,7 +557,7 @@ class BenchmarkSpec {
     fun `It runs Interface15`() {
         // Given
         val verifier = Verifier()
-        val instance: Interface15Mock = kmock(verifier = verifier)
+        val instance: Interface15Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -574,7 +575,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -588,7 +589,7 @@ class BenchmarkSpec {
     fun `It runs Interface16`() {
         // Given
         val verifier = Verifier()
-        val instance: Interface16Mock = kmock(verifier = verifier)
+        val instance: Interface16Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -606,7 +607,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -620,7 +621,7 @@ class BenchmarkSpec {
     fun `It runs Interface17`() {
         // Given
         val verifier = Verifier()
-        val instance: Interface17Mock = kmock(verifier = verifier)
+        val instance: Interface17Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -638,7 +639,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -652,7 +653,7 @@ class BenchmarkSpec {
     fun `It runs Interface18`() {
         // Given
         val verifier = Verifier()
-        val instance: Interface18Mock = kmock(verifier = verifier)
+        val instance: Interface18Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -670,7 +671,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -684,7 +685,7 @@ class BenchmarkSpec {
     fun `It runs Interface19`() {
         // Given
         val verifier = Verifier()
-        val instance: Interface19Mock = kmock(verifier = verifier)
+        val instance: Interface19Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -702,7 +703,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -716,7 +717,7 @@ class BenchmarkSpec {
     fun `It runs Interface20`() {
         // Given
         val verifier = Verifier()
-        val instance: Interface20Mock = kmock(verifier = verifier)
+        val instance: Interface20Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -734,7 +735,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -748,7 +749,7 @@ class BenchmarkSpec {
     fun `It runs Interface21`() {
         // Given
         val verifier = Verifier()
-        val instance: Interface21Mock = kmock(verifier = verifier)
+        val instance: Interface21Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -766,7 +767,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -780,7 +781,7 @@ class BenchmarkSpec {
     fun `It runs Interface22`() {
         // Given
         val verifier = Verifier()
-        val instance: Interface22Mock = kmock(verifier = verifier)
+        val instance: Interface22Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -798,7 +799,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -812,7 +813,7 @@ class BenchmarkSpec {
     fun `It runs Interface23`() {
         // Given
         val verifier = Verifier()
-        val instance: Interface23Mock = kmock(verifier = verifier)
+        val instance: Interface23Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -830,7 +831,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -844,7 +845,7 @@ class BenchmarkSpec {
     fun `It runs Interface24`() {
         // Given
         val verifier = Verifier()
-        val instance: Interface24Mock = kmock(verifier = verifier)
+        val instance: Interface24Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -862,7 +863,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -876,7 +877,7 @@ class BenchmarkSpec {
     fun `It runs Interface25`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface25Mock = kmock(verifier = verifier)
+        val instance: Interface25Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -894,7 +895,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -908,7 +909,7 @@ class BenchmarkSpec {
     fun `It runs Interface26`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface26Mock = kmock(verifier = verifier)
+        val instance: Interface26Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -926,7 +927,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -940,7 +941,7 @@ class BenchmarkSpec {
     fun `It runs Interface27`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface27Mock = kmock(verifier = verifier)
+        val instance: Interface27Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -958,7 +959,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -972,7 +973,7 @@ class BenchmarkSpec {
     fun `It runs Interface28`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface28Mock = kmock(verifier = verifier)
+        val instance: Interface28Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -990,7 +991,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -1004,7 +1005,7 @@ class BenchmarkSpec {
     fun `It runs Interface29`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface29Mock = kmock(verifier = verifier)
+        val instance: Interface29Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -1022,7 +1023,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -1036,7 +1037,7 @@ class BenchmarkSpec {
     fun `It runs Interface30`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface30Mock = kmock(verifier = verifier)
+        val instance: Interface30Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -1054,7 +1055,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -1068,7 +1069,7 @@ class BenchmarkSpec {
     fun `It runs Interface31`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface31Mock = kmock(verifier = verifier)
+        val instance: Interface31Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -1086,7 +1087,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -1100,7 +1101,7 @@ class BenchmarkSpec {
     fun `It runs Interface32`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface32Mock = kmock(verifier = verifier)
+        val instance: Interface32Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -1118,7 +1119,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -1132,7 +1133,7 @@ class BenchmarkSpec {
     fun `It runs Interface33`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface33Mock = kmock(verifier = verifier)
+        val instance: Interface33Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -1150,7 +1151,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -1164,7 +1165,7 @@ class BenchmarkSpec {
     fun `It runs Interface34`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface34Mock = kmock(verifier = verifier)
+        val instance: Interface34Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -1182,7 +1183,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -1196,7 +1197,7 @@ class BenchmarkSpec {
     fun `It runs Interface35`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface35Mock = kmock(verifier = verifier)
+        val instance: Interface35Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -1214,7 +1215,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -1228,7 +1229,7 @@ class BenchmarkSpec {
     fun `It runs Interface36`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface36Mock = kmock(verifier = verifier)
+        val instance: Interface36Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -1246,7 +1247,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -1260,7 +1261,7 @@ class BenchmarkSpec {
     fun `It runs Interface37`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface37Mock = kmock(verifier = verifier)
+        val instance: Interface37Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -1278,7 +1279,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -1292,7 +1293,7 @@ class BenchmarkSpec {
     fun `It runs Interface38`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface38Mock = kmock(verifier = verifier)
+        val instance: Interface38Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -1310,7 +1311,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -1324,7 +1325,7 @@ class BenchmarkSpec {
     fun `It runs Interface39`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface39Mock = kmock(verifier = verifier)
+        val instance: Interface39Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -1342,7 +1343,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -1356,7 +1357,7 @@ class BenchmarkSpec {
     fun `It runs Interface40`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface40Mock = kmock(verifier = verifier)
+        val instance: Interface40Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -1374,7 +1375,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -1388,7 +1389,7 @@ class BenchmarkSpec {
     fun `It runs Interface41`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface41Mock = kmock(verifier = verifier)
+        val instance: Interface41Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -1406,7 +1407,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -1420,7 +1421,7 @@ class BenchmarkSpec {
     fun `It runs Interface42`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface42Mock = kmock(verifier = verifier)
+        val instance: Interface42Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -1438,7 +1439,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -1452,7 +1453,7 @@ class BenchmarkSpec {
     fun `It runs Interface43`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface43Mock = kmock(verifier = verifier)
+        val instance: Interface43Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -1470,7 +1471,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -1484,7 +1485,7 @@ class BenchmarkSpec {
     fun `It runs Interface44`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface44Mock = kmock(verifier = verifier)
+        val instance: Interface44Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -1502,7 +1503,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -1516,7 +1517,7 @@ class BenchmarkSpec {
     fun `It runs Interface45`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface45Mock = kmock(verifier = verifier)
+        val instance: Interface45Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -1534,7 +1535,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -1548,7 +1549,7 @@ class BenchmarkSpec {
     fun `It runs Interface46`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface46Mock = kmock(verifier = verifier)
+        val instance: Interface46Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -1566,7 +1567,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -1580,7 +1581,7 @@ class BenchmarkSpec {
     fun `It runs Interface47`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface47Mock = kmock(verifier = verifier)
+        val instance: Interface47Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -1598,7 +1599,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -1612,7 +1613,7 @@ class BenchmarkSpec {
     fun `It runs Interface48`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface48Mock = kmock(verifier = verifier)
+        val instance: Interface48Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -1630,7 +1631,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()
@@ -1644,7 +1645,7 @@ class BenchmarkSpec {
     fun `It runs Interface49`() = runBlockingTest {
         // Given
         val verifier = Verifier()
-        val instance: Interface49Mock = kmock(verifier = verifier)
+        val instance: Interface49Mock = kmock(collector = verifier)
         val arg0: Int = fixture.fixture()
         val arg1: Any = fixture.fixture()
 
@@ -1662,7 +1663,7 @@ class BenchmarkSpec {
         instance.doNothing()
 
         // Then
-        verifier.verifyStrictOrder {
+        verifier.assertOrder {
             instance._doSomething.hasBeenStrictlyCalledWith()
             instance._doSomethingElse.hasBeenStrictlyCalledWith(arg0, arg1)
             instance._doAnything.hasBeenStrictlyCalledWith()

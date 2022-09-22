@@ -13,6 +13,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinNativeCompile
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
+import tech.antibytes.gradle.configuration.ensureIosDeviceCompatibility
+import tech.antibytes.gradle.configuration.isIdea
 
 plugins {
     id("org.jetbrains.kotlin.multiplatform")
@@ -36,15 +38,15 @@ kotlin {
     jvm()
 
     ios()
+    iosSimulatorArm64()
+    ensureIosDeviceCompatibility()
 
     sourceSets {
-        removeAll { sourceSet ->
-            setOf(
-                "androidAndroidTestRelease",
-                "androidTestFixtures",
-                "androidTestFixturesDebug",
-                "androidTestFixturesRelease",
-            ).contains(sourceSet.name)
+        all {
+            languageSettings.apply {
+                optIn("kotlin.ExperimentalUnsignedTypes")
+                optIn("kotlin.RequiresOptIn")
+            }
         }
 
         val commonMain by getting {
@@ -69,14 +71,28 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
-                dependsOn(commonMain)
                 implementation(Dependency.multiplatform.kotlin.android)
+            }
+        }
+        if (!isIdea()) {
+            val androidAndroidTestRelease by getting
+            val androidAndroidTest by getting {
+                dependsOn(androidAndroidTestRelease)
+            }
+            val androidTestFixturesDebug by getting
+            val androidTestFixturesRelease by getting
+
+            val androidTestFixtures by getting {
+                dependsOn(androidTestFixturesDebug)
+                dependsOn(androidTestFixturesRelease)
+            }
+
+            val androidTest by getting {
+                dependsOn(androidTestFixtures)
             }
         }
         val androidTest by getting {
             dependencies {
-                dependsOn(commonTest)
-
                 implementation(Dependency.multiplatform.test.jvm)
                 implementation(Dependency.multiplatform.test.junit)
                 implementation(Dependency.android.test.robolectric)
@@ -85,43 +101,31 @@ kotlin {
 
         val jsMain by getting {
             dependencies {
-                dependsOn(commonMain)
                 implementation(Dependency.multiplatform.kotlin.js)
                 implementation(Dependency.js.nodejs)
             }
         }
         val jsTest by getting {
+            dependsOn(commonTest)
             dependencies {
-                dependsOn(commonTest)
-
                 implementation(Dependency.multiplatform.test.js)
             }
         }
 
         val jvmMain by getting {
             dependencies {
-                dependsOn(commonMain)
                 implementation(Dependency.multiplatform.kotlin.jdk8)
             }
         }
         val jvmTest by getting {
             dependencies {
-                dependsOn(commonTest)
                 implementation(Dependency.multiplatform.test.jvm)
                 implementation(Dependency.multiplatform.test.junit)
             }
         }
 
-        val iosMain by getting {
-            dependencies {
-                dependsOn(commonMain)
-            }
-        }
-        val iosTest by getting {
-            dependencies {
-                dependsOn(commonTest)
-            }
-        }
+        val iosMain by getting
+        val iosTest by getting
     }
 }
 
@@ -225,4 +229,3 @@ afterEvaluate {
         }
     }
 }
-
